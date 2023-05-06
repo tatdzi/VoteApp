@@ -1,0 +1,37 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: tatdzi
+  Date: 06/05/2023
+  Time: 13:14
+  To change this template use File | Settings | File Templates.
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jstl="http://java.sun.com/jsp/jstl/core"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          version="2.0">
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+    <html>
+    <head><title>Title</title></head>
+    <body>
+    <form style="text-align: center" action="vote" method="post">
+        <h2>Information about you</h2>
+        <input type="text" name="firstName" maxlength="12" placeholder="First Name"/>
+        <input type="text" name="lastName" maxlength="16" placeholder="Last Name"/><br/>
+        <h2>Which singer is the best?</h2>
+        <jstl:forEach items="${artists}" var="items">
+            ${items.name}<input type="radio" name="artist" value="${items.id}"/>
+        </jstl:forEach>
+        <br/>
+        <h2>Which genres are the best?</h2>
+        <jstl:forEach items="${genre}" var="items">
+            ${items.name}<input type="checkbox" name="genre" value="${items.id}"/>
+        </jstl:forEach>
+        <br/>
+           <textarea name="text" cols="30" rows="3" placeholder="Short text about you">${text}</textarea>
+        <br/>
+        <button>Submit</button>
+    </form>
+    </body>
+    </html>
+</jsp:root>
