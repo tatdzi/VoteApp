@@ -1,6 +1,6 @@
 package by.it_academy.jd2.Mk_JD2_98_23.service.factory;
 
-import by.it_academy.jd2.Mk_JD2_98_23.dao.memory.factory.ArtistDaoFactory;
+import by.it_academy.jd2.Mk_JD2_98_23.dao.factory.ArtistDaoFactory;
 import by.it_academy.jd2.Mk_JD2_98_23.service.ArtistService;
 import by.it_academy.jd2.Mk_JD2_98_23.service.api.IArtistService;
 

@@ -75,9 +75,10 @@ public class VoteServlet extends HttpServlet {
         }
         String info = infoRow[0];
         voteService.save(new VoteCreateDTO(artist,genre,info));
-        req.setAttribute("genre", genreService);
-        req.setAttribute("artists",artistService);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/ui/Vote.jspx");
+        req.setAttribute("genre", voteService.getTopGenre());
+        req.setAttribute("artists",voteService.getTopArtist());
+        req.setAttribute("info",voteService.getInfoByDate());
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/ui/VoteResult.jspx");
         dispatcher.forward(req,resp);
 
     }

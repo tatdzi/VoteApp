@@ -1,6 +1,6 @@
 package by.it_academy.jd2.Mk_JD2_98_23.service.factory;
 
-import by.it_academy.jd2.Mk_JD2_98_23.dao.memory.factory.VoteDaoFactory;
+import by.it_academy.jd2.Mk_JD2_98_23.dao.factory.VoteDaoFactory;
 import by.it_academy.jd2.Mk_JD2_98_23.service.VoteService;
 import by.it_academy.jd2.Mk_JD2_98_23.service.api.IVoteService;
 

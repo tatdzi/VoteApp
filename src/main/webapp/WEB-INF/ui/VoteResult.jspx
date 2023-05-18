@@ -12,7 +12,26 @@
           version="2.0">
   <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
     <html>
-    <head><title>Title</title></head>
-    <body></body>
+    <head>
+      <title>Title</title>
+    </head>
+    <body style="text-align: center">
+    <h2>Results of test</h2>
+    <h3>Top of Singers</h3>
+      <jstl:forEach items="${artists}" var="items">
+        <span>${items.name}</span><br/>
+      </jstl:forEach>
+    <h3>Top of Genre</h3>
+      <jstl:forEach items="${genre}" var="items">
+        <span>${items.name}</span><br/>
+      </jstl:forEach>
+    <h3>oll tests : ${info.size()}</h3>
+    <h3>Comments</h3>
+    <jstl:forEach items="${info}" var="items">
+      <span>${items}</span><br/>
+    </jstl:forEach>
+    <p>
+    </p>
+    </body>
     </html>
 </jsp:root>
