@@ -82,38 +82,4 @@ public class VoteServlet extends HttpServlet {
         dispatcher.forward(req,resp);
 
     }
-
-
-    public String getResult(){
-        StringBuilder builder = new StringBuilder();
-        builder.append("<body style=\"text-align: center\">\n");
-        builder.append("<h2>Results of test</h2>\n");
-        int count = 1;
-        builder.append("<h3>Top of Singers</h3>\n");
-        builder.append("<p>\n");
-        for (Integer artist:voteService.getTopArtist()) {
-            builder.append(count+". "+artistService.get(artist).getName()+" "+"<br>");
-            count++;
-        }
-        builder.append("</p>\n");
-        builder.append("<h3>Top of Genre</h3>\n");
-        builder.append("<p>\n");
-        count = 1;
-        for (Integer genr:voteService.getTopGenre()){
-            builder.append(count+". "+genreService.get(genr).getName()+" "+"<br>");
-            count++;
-        }
-        builder.append("</p>\n");
-        builder.append("<h3>oll tests : "+voteService.get().size()+"</h3>\n");
-        builder.append("<h3>Comments</h3>");
-        builder.append("<p>\n");
-        for (VoteDTO vote:voteService.getSortedTime()){
-            builder.append(vote.getInfo()+" : "+vote.getDate()+"<br>");
-        }
-        builder.append("</p>\n");
-        builder.append("</body>\n");
-
-        return builder.toString();
-    }
-
 }

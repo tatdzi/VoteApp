@@ -52,7 +52,7 @@ public class GenreDatabaseHendler extends Configs{
             PreparedStatement ps = getDbConnection().prepareStatement(insert);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                dto = new GenrDTO(rs.getInt(1), rs.getString(1));
+                dto = new GenrDTO(rs.getInt(Const.GENRE_ID), rs.getString(Const.GENRE_NAME));
             }
             ps.close();
         } catch (SQLException e) {
@@ -69,7 +69,7 @@ public class GenreDatabaseHendler extends Configs{
             PreparedStatement ps = getDbConnection().prepareStatement(insert);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                dto = new GenrDTO(rs.getInt(1), rs.getString(1));
+                dto = new GenrDTO(rs.getInt(Const.GENRE_ID), rs.getString(Const.GENRE_NAME));
             }
             ps.close();
         } catch (SQLException e) {

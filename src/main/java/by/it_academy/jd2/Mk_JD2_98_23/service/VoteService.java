@@ -1,6 +1,7 @@
 package by.it_academy.jd2.Mk_JD2_98_23.service;
 
 
+import by.it_academy.jd2.Mk_JD2_98_23.core.dto.ArtistDTO;
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.GenrDTO;
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.VoteCreateDTO;
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.VoteDTO;
@@ -56,7 +57,7 @@ public class VoteService implements IVoteService {
     }
 
     @Override
-    public List<Integer> getTopArtist() {
+    public List<ArtistDTO> getTopArtist() {
         List<VoteDTO> votes= voteDao.get();
         Map<Integer,Integer> top = new HashMap<>();
         for (VoteDTO element:votes) {
@@ -70,11 +71,16 @@ public class VoteService implements IVoteService {
                 (Map.Entry.comparingByValue())).collect(Collectors
                 .toMap(Map.Entry::getKey,
                         Map.Entry::getValue,(e1,e2)->e1,LinkedHashMap::new));
-        return new ArrayList<>(top.keySet());
+
+        List<ArtistDTO> result =new ArrayList();
+        for (Integer id:top.keySet()){
+            result.add(artistService.get(id));
+        }
+        return result;
     }
 
     @Override
-    public List<Integer> getTopGenre() {
+    public List<GenrDTO> getTopGenre() {
         List<VoteDTO> votes= voteDao.get();
         Map<Integer,Integer> top = new HashMap<>();
         for (VoteDTO element:votes) {
@@ -91,7 +97,12 @@ public class VoteService implements IVoteService {
                 (Map.Entry.comparingByValue())).collect(Collectors
                 .toMap(Map.Entry::getKey,
                         Map.Entry::getValue,(e1,e2)->e1,LinkedHashMap::new));
-        return new ArrayList<>(top.keySet());
+
+        List<GenrDTO> result =new ArrayList();
+        for (Integer id:top.keySet()){
+            result.add(genreService.get(id));
+        }
+        return result;
     }
 
     @Override

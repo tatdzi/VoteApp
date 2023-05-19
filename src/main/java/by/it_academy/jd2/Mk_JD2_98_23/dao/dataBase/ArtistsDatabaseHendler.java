@@ -52,7 +52,7 @@ public class ArtistsDatabaseHendler extends Configs{
             PreparedStatement ps = getDbConnection().prepareStatement(insert);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                dto = new ArtistDTO(rs.getInt(1), rs.getString(1));
+                dto = new ArtistDTO(rs.getInt("id"), rs.getString("name"));
             }
             ps.close();
         } catch (SQLException e) {
@@ -69,7 +69,7 @@ public class ArtistsDatabaseHendler extends Configs{
             PreparedStatement ps = getDbConnection().prepareStatement(insert);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                dto = new ArtistDTO(rs.getInt(1), rs.getString(1));
+                dto = new ArtistDTO(rs.getInt("id"), rs.getString("name"));
             }
             ps.close();
         } catch (SQLException e) {
