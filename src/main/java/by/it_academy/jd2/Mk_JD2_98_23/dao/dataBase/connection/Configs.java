@@ -1,4 +1,4 @@
-package by.it_academy.jd2.Mk_JD2_98_23.dao.dataBase;
+package by.it_academy.jd2.Mk_JD2_98_23.dao.dataBase.connection;
 
 public class Configs {
     protected String dbHost = "localhost";
