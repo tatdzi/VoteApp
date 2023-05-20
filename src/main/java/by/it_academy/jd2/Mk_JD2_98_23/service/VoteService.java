@@ -44,8 +44,8 @@ public class VoteService implements IVoteService {
     }
 
     public void validate(VoteCreateDTO vote){
-        Integer[] genre = vote.getGenre();
-        if (genre.length<3 || genre.length>5){
+        List<Integer> genre = vote.getGenre();
+        if (genre.size()<3 || genre.size()>5){
             throw new IllegalArgumentException("Жанров должно быть от 3 до 5");
         }
         for (Integer genr:genre){
@@ -84,7 +84,7 @@ public class VoteService implements IVoteService {
         List<VoteDTO> votes= voteDao.get();
         Map<Integer,Integer> top = new HashMap<>();
         for (VoteDTO element:votes) {
-            Integer[] genre = element.getGenre();
+            List<Integer> genre = element.getGenre();
             for (Integer id:genre) {
                 if (top.containsKey(id)) {
                     top.put(id, top.get(id) + 1);

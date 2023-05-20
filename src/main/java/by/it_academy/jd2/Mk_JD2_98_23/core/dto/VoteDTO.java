@@ -5,17 +5,18 @@ import java.text.FieldPosition;
 import java.text.ParsePosition;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 
 public class VoteDTO implements Comparable<VoteDTO> {
     private Integer id;
     private Integer artist;
-    private Integer[] genre;
+    private List<Integer> genre;
     private String info;
 
     private Date date = new Date();
 
 
-    public VoteDTO(Integer id, Integer artist, Integer[] genre, String info) {
+    public VoteDTO(Integer id, Integer artist, List<Integer> genre, String info) {
         this.id = id;
         this.artist = artist;
         this.genre = genre;
@@ -30,7 +31,7 @@ public class VoteDTO implements Comparable<VoteDTO> {
         return artist;
     }
 
-    public Integer[] getGenre() {
+    public List<Integer> getGenre() {
         return genre;
     }
 

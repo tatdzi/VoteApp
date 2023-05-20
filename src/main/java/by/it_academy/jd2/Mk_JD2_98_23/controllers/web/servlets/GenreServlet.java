@@ -40,5 +40,6 @@ public class GenreServlet extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
         GenreCreateDTO dto = new GenreCreateDTO(req.getParameter("name"));
+        genreService.save(dto);
     }
 }

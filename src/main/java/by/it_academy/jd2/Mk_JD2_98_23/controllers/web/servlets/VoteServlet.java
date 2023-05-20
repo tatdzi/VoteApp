@@ -21,6 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -66,15 +67,16 @@ public class VoteServlet extends HttpServlet {
         }
         String[] genreRow = req.getParameterMap().get(GENRE_PARAM_NAME);
         Integer[] genre = new Integer[genreRow.length];
+        List<Integer> genres = new ArrayList<>();
         for (int i = 0;i<genreRow.length;i++){
-            genre[i]=Integer.parseInt(genreRow[i]);
+            genres.add(Integer.parseInt(genreRow[i]));
         }
         String[] infoRow = req.getParameterMap().get(INFO_PARAM_NAME);
         if (infoRow.length>1){
             throw new IllegalArgumentException("too much info");
         }
         String info = infoRow[0];
-        voteService.save(new VoteCreateDTO(artist,genre,info));
+        voteService.save(new VoteCreateDTO(artist,genres,info));
         req.setAttribute("genre", voteService.getTopGenre());
         req.setAttribute("artists",voteService.getTopArtist());
         req.setAttribute("info",voteService.getInfoByDate());
