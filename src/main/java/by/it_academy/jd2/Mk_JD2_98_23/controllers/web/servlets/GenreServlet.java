@@ -2,8 +2,11 @@ package by.it_academy.jd2.Mk_JD2_98_23.controllers.web.servlets;
 
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.GenreCreateDTO;
 import by.it_academy.jd2.Mk_JD2_98_23.core.entity.GenrEntity;
+import by.it_academy.jd2.Mk_JD2_98_23.dao.SpringFactory.ApplicationContextFactory;
 import by.it_academy.jd2.Mk_JD2_98_23.service.api.IGenreService;
 import by.it_academy.jd2.Mk_JD2_98_23.service.factory.GenreServiceFactory;
+import by.it_academy.jd2.Mk_JD2_98_23.service.springService.ArtistService;
+import by.it_academy.jd2.Mk_JD2_98_23.service.springService.GenreService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,7 +22,7 @@ public class GenreServlet extends HttpServlet {
     private IGenreService genreService;
 
     public GenreServlet() {
-        genreService = GenreServiceFactory.getInstance();
+        genreService = ApplicationContextFactory.getInstance().getBean("genreService", GenreService.class);;
     }
 
     @Override

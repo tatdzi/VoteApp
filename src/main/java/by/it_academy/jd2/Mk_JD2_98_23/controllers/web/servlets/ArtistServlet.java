@@ -2,8 +2,10 @@ package by.it_academy.jd2.Mk_JD2_98_23.controllers.web.servlets;
 
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.ArtistCreateDTO;
 import by.it_academy.jd2.Mk_JD2_98_23.core.entity.ArtistEntity;
+import by.it_academy.jd2.Mk_JD2_98_23.dao.SpringFactory.ApplicationContextFactory;
 import by.it_academy.jd2.Mk_JD2_98_23.service.api.IArtistService;
 import by.it_academy.jd2.Mk_JD2_98_23.service.factory.ArtistServiceFactory;
+import by.it_academy.jd2.Mk_JD2_98_23.service.springService.ArtistService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,7 +21,7 @@ public class ArtistServlet extends HttpServlet {
     private IArtistService artistService;
 
     public ArtistServlet() {
-        artistService = ArtistServiceFactory.getInstance();
+        artistService = ApplicationContextFactory.getInstance().getBean("artistService", ArtistService.class);
     }
 
     @Override
