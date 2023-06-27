@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <bean id="entityManagerFactory" class="javax.persistence.Persistence" factory-method="createEntityManagerFactory">
+        <constructor-arg value="voting"/>
+    </bean>
+    <bean id="artistHibernateDao" class="by.it_academy.jd2.Mk_JD2_98_23.dao.springHibernate.ArtistHibernateDao">
+        <constructor-arg ref="entityManagerFactory"/>
+    </bean>
+    <bean id="genreHibernateDao" class="by.it_academy.jd2.Mk_JD2_98_23.dao.springHibernate.GenreHibernateDao">
+        <constructor-arg ref="entityManagerFactory"/>
+    </bean>
+    <bean id="voteHibernateDao" class="by.it_academy.jd2.Mk_JD2_98_23.dao.springHibernate.VoteHibernateDao">
+        <constructor-arg ref="entityManagerFactory"/>
+    </bean>
+    <bean id="artistService" class="by.it_academy.jd2.Mk_JD2_98_23.service.springService.ArtistService">
+        <constructor-arg ref="artistHibernateDao"/>
+    </bean>
+    <bean id="genreService" class="by.it_academy.jd2.Mk_JD2_98_23.service.springService.GenreService">
+        <constructor-arg ref="genreHibernateDao"/>
+    </bean>
+    <bean id="voteService" class="by.it_academy.jd2.Mk_JD2_98_23.service.springService.VoteService">
+        <constructor-arg ref="voteHibernateDao"/>
+        <constructor-arg ref="artistService"/>
+        <constructor-arg ref="genreService"/>
+    </bean>
+
+</beans>

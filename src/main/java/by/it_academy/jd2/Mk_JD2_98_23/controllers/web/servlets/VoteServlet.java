@@ -3,12 +3,13 @@ package by.it_academy.jd2.Mk_JD2_98_23.controllers.web.servlets;
 
 
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.VoteCreateDTO;
+import by.it_academy.jd2.Mk_JD2_98_23.dao.SpringFactory.ApplicationContextFactory;
 import by.it_academy.jd2.Mk_JD2_98_23.service.api.IArtistService;
 import by.it_academy.jd2.Mk_JD2_98_23.service.api.IGenreService;
 import by.it_academy.jd2.Mk_JD2_98_23.service.api.IVoteService;
-import by.it_academy.jd2.Mk_JD2_98_23.service.factory.ArtistServiceFactory;
-import by.it_academy.jd2.Mk_JD2_98_23.service.factory.GenreServiceFactory;
-import by.it_academy.jd2.Mk_JD2_98_23.service.factory.VoteServiceFactory;
+import by.it_academy.jd2.Mk_JD2_98_23.service.springService.ArtistService;
+import by.it_academy.jd2.Mk_JD2_98_23.service.springService.GenreService;
+import by.it_academy.jd2.Mk_JD2_98_23.service.springService.VoteService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -34,9 +35,9 @@ public class VoteServlet extends HttpServlet {
 
 
     public VoteServlet() {
-        this.genreService= GenreServiceFactory.getInstance();
-        this.artistService= ArtistServiceFactory.getInstance();
-        this.voteService= VoteServiceFactory.getInstance();
+        this.genreService= ApplicationContextFactory.getInstance().getBean("genreService", GenreService.class);;
+        this.artistService= ApplicationContextFactory.getInstance().getBean("artistService", ArtistService.class);;
+        this.voteService= ApplicationContextFactory.getInstance().getBean("voteService", VoteService.class);;
     }
 
     @Override

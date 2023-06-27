@@ -12,7 +12,7 @@ public class EntityManagerFactoryVotes {
         if (instance == null){
             synchronized (EntityManagerFactory.class){
                 if (instance == null){
-                    instance = Persistence.createEntityManagerFactory("tutorial");
+                    instance = Persistence.createEntityManagerFactory("voting");
                 }
             }
         }
