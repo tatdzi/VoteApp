@@ -1,7 +1,7 @@
 package by.it_academy.jd2.Mk_JD2_98_23.service;
 
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.ArtistCreateDTO;
-import by.it_academy.jd2.Mk_JD2_98_23.core.dto.ArtistDTO;
+import by.it_academy.jd2.Mk_JD2_98_23.core.entity.ArtistEntity;
 import by.it_academy.jd2.Mk_JD2_98_23.dao.api.IArtistDao;
 
 import by.it_academy.jd2.Mk_JD2_98_23.service.api.IArtistService;
@@ -16,17 +16,18 @@ public class ArtistService implements IArtistService {
     }
 
     @Override
-    public List<ArtistDTO> get() {
+    public List<ArtistEntity> get() {
         return dao.get();
     }
 
     @Override
-    public ArtistDTO get(int id) {
+    public ArtistEntity get(int id) {
         return dao.get(id);
     }
 
     @Override
-    public ArtistDTO save(ArtistCreateDTO gen) {
-        return dao.save(gen);
+    public ArtistEntity save(ArtistCreateDTO gen) {
+        ArtistEntity dto = new ArtistEntity(gen.getName());
+        return dao.save(dto);
     }
 }

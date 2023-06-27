@@ -1,15 +1,6 @@
 package by.it_academy.jd2.Mk_JD2_98_23.dao.dataBase;
 
-import by.it_academy.jd2.Mk_JD2_98_23.core.dto.ArtistCreateDTO;
-import by.it_academy.jd2.Mk_JD2_98_23.core.dto.ArtistDTO;
-import by.it_academy.jd2.Mk_JD2_98_23.dao.api.IArtistDao;
-import by.it_academy.jd2.Mk_JD2_98_23.dao.dataBase.connection.Const;
-import by.it_academy.jd2.Mk_JD2_98_23.dao.dataBase.connection.DatabaseConnectinFactory;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-
+/*
 public class ArtistDataBaseDao extends DatabaseConnectinFactory implements IArtistDao {
 
 
@@ -20,10 +11,9 @@ public class ArtistDataBaseDao extends DatabaseConnectinFactory implements IArti
     @Override
     public List<ArtistDTO> get() {
         List<ArtistDTO> artistDTOList = new ArrayList<>();
-        String insert = "SELECT artists_id, name FROM "+ Const.ARTISTS_TABLE;
         try (Connection conn = DatabaseConnectinFactory.getDbConnection();
-             Statement st = conn.createStatement();
-             ResultSet rs = st.executeQuery(insert)){
+             PreparedStatement st = conn.prepareStatement("SELECT artists_id, name FROM app.artists");
+             ResultSet rs = st.executeQuery()){
             while (rs.next()){
                 artistDTOList.add(new ArtistDTO(rs.getInt("artists_id"),rs.getString("name")));
             }
@@ -38,12 +28,14 @@ public class ArtistDataBaseDao extends DatabaseConnectinFactory implements IArti
     @Override
     public ArtistDTO get(int id) {
         ArtistDTO dto = null;
-        String insert = "SELECT artists_id, name FROM "+Const.ARTISTS_TABLE+" WHERE artists_id = "+id+";";
         try (Connection conn = DatabaseConnectinFactory.getDbConnection();
-             Statement st = conn.createStatement();
-             ResultSet rs = st.executeQuery(insert);){
-            while (rs.next()) {
-                dto = new ArtistDTO(rs.getInt("artists_id"), rs.getString("name"));
+             PreparedStatement st = conn.prepareStatement("SELECT artists_id, name FROM app.artists WHERE artists_id = ?;");
+             ){
+            st.setInt(1,id);
+            try (ResultSet rs = st.executeQuery();) {
+                while (rs.next()) {
+                    dto = new ArtistDTO(rs.getInt("artists_id"), rs.getString("name"));
+                }
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -56,12 +48,13 @@ public class ArtistDataBaseDao extends DatabaseConnectinFactory implements IArti
     @Override
     public synchronized ArtistDTO save(ArtistCreateDTO gen) {
         ArtistDTO dto = null;
-        String insert = "INSERT INTO "+Const.ARTISTS_TABLE+"(name)  VALUES ('"+gen.getName()+"') RETURNING artists_id";
         try (Connection conn = DatabaseConnectinFactory.getDbConnection();
-             Statement st = conn.createStatement();
-             ResultSet rs = st.executeQuery(insert)){
-            if (rs.next()){
-                dto=new ArtistDTO(rs.getInt("artists_id"),gen.getName());
+             PreparedStatement st = conn.prepareStatement("INSERT INTO app.artists (name)  VALUES (?) RETURNING artists_id");){
+            st.setString(1, gen.getName());
+            try (ResultSet rs = st.executeQuery()){
+                if (rs.next()){
+                    dto=new ArtistDTO(rs.getInt("artists_id"),gen.getName());
+                }
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -71,3 +64,5 @@ public class ArtistDataBaseDao extends DatabaseConnectinFactory implements IArti
         return dto;
     }
 }
+
+ */

@@ -1,8 +1,7 @@
 package by.it_academy.jd2.Mk_JD2_98_23.controllers.web.servlets;
 
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.ArtistCreateDTO;
-import by.it_academy.jd2.Mk_JD2_98_23.core.dto.ArtistDTO;
-import by.it_academy.jd2.Mk_JD2_98_23.service.ArtistService;
+import by.it_academy.jd2.Mk_JD2_98_23.core.entity.ArtistEntity;
 import by.it_academy.jd2.Mk_JD2_98_23.service.api.IArtistService;
 import by.it_academy.jd2.Mk_JD2_98_23.service.factory.ArtistServiceFactory;
 import jakarta.servlet.ServletException;
@@ -27,9 +26,9 @@ public class ArtistServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
-        List<ArtistDTO> artistDTOList = artistService.get();
+        List<ArtistEntity> artistDTOList = artistService.get();
         StringBuilder builder = new StringBuilder();
-        for (ArtistDTO artist:artistDTOList){
+        for (ArtistEntity artist:artistDTOList){
             builder.append("["+artist.getName()+",  "+artist.getId()+"]<br>");
         }
         writer.write(builder.toString());
