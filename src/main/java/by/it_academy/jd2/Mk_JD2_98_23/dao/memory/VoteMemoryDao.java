@@ -1,15 +1,6 @@
 package by.it_academy.jd2.Mk_JD2_98_23.dao.memory;
 
-import by.it_academy.jd2.Mk_JD2_98_23.core.dto.GenrDTO;
-import by.it_academy.jd2.Mk_JD2_98_23.core.dto.VoteCreateDTO;
-import by.it_academy.jd2.Mk_JD2_98_23.core.dto.VoteDTO;
-import by.it_academy.jd2.Mk_JD2_98_23.dao.api.IVoteDao;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
+/*
 public class VoteMemoryDao implements IVoteDao {
 
     private Map<Integer,VoteDTO> votes = new ConcurrentHashMap<>();
@@ -35,3 +26,5 @@ public class VoteMemoryDao implements IVoteDao {
         return dto;
     }
 }
+
+ */

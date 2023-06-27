@@ -1,14 +1,6 @@
 package by.it_academy.jd2.Mk_JD2_98_23.dao.memory;
 
-import by.it_academy.jd2.Mk_JD2_98_23.core.dto.ArtistCreateDTO;
-import by.it_academy.jd2.Mk_JD2_98_23.core.dto.ArtistDTO;
-import by.it_academy.jd2.Mk_JD2_98_23.dao.api.IArtistDao;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
+/*
 public class ArtistMemoryDao implements IArtistDao {
     private Map<Integer,ArtistDTO> artists= new ConcurrentHashMap<>();
 
@@ -44,3 +36,5 @@ public class ArtistMemoryDao implements IArtistDao {
         return dto;
     }
 }
+
+ */

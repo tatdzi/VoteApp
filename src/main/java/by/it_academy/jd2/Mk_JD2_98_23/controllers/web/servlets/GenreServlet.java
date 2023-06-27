@@ -1,8 +1,7 @@
 package by.it_academy.jd2.Mk_JD2_98_23.controllers.web.servlets;
 
-import by.it_academy.jd2.Mk_JD2_98_23.core.dto.GenrDTO;
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.GenreCreateDTO;
-import by.it_academy.jd2.Mk_JD2_98_23.service.GenreService;
+import by.it_academy.jd2.Mk_JD2_98_23.core.entity.GenrEntity;
 import by.it_academy.jd2.Mk_JD2_98_23.service.api.IGenreService;
 import by.it_academy.jd2.Mk_JD2_98_23.service.factory.GenreServiceFactory;
 import jakarta.servlet.ServletException;
@@ -27,9 +26,9 @@ public class GenreServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
-        List<GenrDTO> genrDTOList = genreService.get();
+        List<GenrEntity> genrDTOList = genreService.get();
         StringBuilder builder = new StringBuilder();
-        for (GenrDTO genr:genrDTOList) {
+        for (GenrEntity genr:genrDTOList) {
             builder.append("["+genr.getName()+",  "+genr.getId()+"]<br>");
         }
         writer.write(builder.toString());
@@ -40,5 +39,6 @@ public class GenreServlet extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
         GenreCreateDTO dto = new GenreCreateDTO(req.getParameter("name"));
+        genreService.save(dto);
     }
 }

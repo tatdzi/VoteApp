@@ -1,7 +1,7 @@
 package by.it_academy.jd2.Mk_JD2_98_23.service;
 
-import by.it_academy.jd2.Mk_JD2_98_23.core.dto.GenrDTO;
 import by.it_academy.jd2.Mk_JD2_98_23.core.dto.GenreCreateDTO;
+import by.it_academy.jd2.Mk_JD2_98_23.core.entity.GenrEntity;
 import by.it_academy.jd2.Mk_JD2_98_23.dao.api.IGenreDao;
 import by.it_academy.jd2.Mk_JD2_98_23.service.api.IGenreService;
 
@@ -16,17 +16,18 @@ public class GenreService implements IGenreService {
     }
 
     @Override
-    public List<GenrDTO> get() {
+    public List<GenrEntity> get() {
         return dao.get();
     }
 
     @Override
-    public GenrDTO get(int id) {
+    public GenrEntity get(int id) {
         return dao.get(id);
     }
 
     @Override
-    public GenrDTO save(GenreCreateDTO gen) {
-        return dao.save(gen);
+    public GenrEntity save(GenreCreateDTO gen) {
+        GenrEntity dto = new GenrEntity(gen.getName());
+        return dao.save(dto);
     }
 }
